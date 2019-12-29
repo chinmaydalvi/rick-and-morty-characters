@@ -1,6 +1,10 @@
 
 .charList{
   z-index: 1;
+  .card-deck .card{
+    width: 25%;
+    flex: none;
+  }
 }
 
 .charInfo{

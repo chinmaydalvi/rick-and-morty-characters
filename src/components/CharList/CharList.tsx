@@ -1,10 +1,10 @@
 import React from 'react';
 import { Dispatch } from 'redux';
 import {connect} from "react-redux";
-import scss from './CharList.module.scss';
 import {fetchCharList} from "../../actions/char-list.actions";
 import {ICharacters} from "../../states/char-list.state";
 import {IFilterState} from "../../states/filter.state";
+import {CardDesign} from "../CardDesign/CardDesign";
 
 interface ICharListProps {
 	filters: IFilterState
@@ -17,7 +17,6 @@ class CharList extends React.Component<ICharListProps>{
 	public constructor(props: any){
 		super(props);
 		this.fetchCharacterListOnScroll = this.fetchCharacterListOnScroll.bind(this);
-		this.displayCharacterList = this.displayCharacterList.bind(this);
 	}
 
 	public componentDidMount(): void {
@@ -41,20 +40,9 @@ class CharList extends React.Component<ICharListProps>{
 	}
 
 
-	public displayCharacterList():JSX.Element[]{
-		return this.props.characters.charList.map((cInfo, index)=>{
-			return <div key={index} className={scss.charInfo}>{JSON.stringify(cInfo)}</div>
-		});
-	}
-
 
 	public render():JSX.Element{
-		return (
-				<>
-					<div className={scss.charList}>CharList</div>
-					{this.displayCharacterList()}
-				</>
-		);
+		return <CardDesign characters={this.props.characters}/>
 	}
 }
 
