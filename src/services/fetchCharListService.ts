@@ -1,5 +1,6 @@
 import {IFilterState} from "../states/filter.state";
 import {store} from "../store";
+import {ICharInfo} from "../states/char-list.state";
 
 class FetchCharListServiceSingleton {
 
@@ -45,8 +46,8 @@ class FetchCharListServiceSingleton {
 	}
 
 	public sanitizeData(response:any, filters: IFilterState){
-		response.results = response.results.map(({id, name, status, species, gender, image, created, origin, location}:any)=>{
-			return { id, name, status, species, gender, image, created, origin, location}
+		response.results = response.results.map(({id, name, status, species, gender, image, created, origin, location}:ICharInfo)=>{
+			return { id, name, status, species, gender, image, created, origin, location};
 		})
 		response.filters = filters;
 		return response;
