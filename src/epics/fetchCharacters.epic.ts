@@ -10,7 +10,7 @@ export const fetchCharacters = (action$: any) => {
 	return action$.pipe(
 			ofType(FETCH_CHARACTER_LIST),
 			mergeMap((action: any) => {
-				return from(FetchCharListService.getCharList(action.payload.pageNo)).pipe(
+				return from(FetchCharListService.getCharList(action.payload.filters)).pipe(
 						map((response: any) => {
 							return {
 								type: FETCH_CHARACTER_LIST_SUCCESS,

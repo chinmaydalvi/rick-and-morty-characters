@@ -5,6 +5,8 @@ export const FILTERS = {
 	status: ["Alive", "Dead", "unknown"]
 }
 
+export const INITIAL_TOTAL_NO_OF_PAGES = 25;
+
 
 
 
