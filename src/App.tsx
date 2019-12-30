@@ -10,10 +10,23 @@ export class App extends React.Component{
 
   public render():JSX.Element{
     return (
-        <div className={scss.App}>
-          <Header/>
-          <CharList />
-        </div>
+        <section className="container-fluid">
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-sm-12 col-12">
+              <Header/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-3 col-md-12 col-sm-12 col-12">
+              filters
+            </div>
+            <div className="col-lg-9 col-md-12 col-sm-12 col-12">
+              <div className={scss.App}>
+                <CharList />
+              </div>
+            </div>
+          </div>
+        </section>
     );
   }
 }
