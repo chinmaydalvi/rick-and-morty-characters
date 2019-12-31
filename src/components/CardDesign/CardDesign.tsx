@@ -7,7 +7,7 @@ interface ICardDesignProps {
 	sortBy: string;
 	characters: ICharacters
 }
-export class CardDesign extends React.Component<ICardDesignProps>{
+export class CardDesign extends React.PureComponent<ICardDesignProps>{
 	constructor(props:any) {
 		super(props);
 		this.cardBox = this.cardBox.bind(this);

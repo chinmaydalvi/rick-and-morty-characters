@@ -14,7 +14,7 @@ interface ICharListProps {
 
 class CharList extends React.Component<ICharListProps>{
 	private lastScrollTop:number = 0;
-	public constructor(props: any){
+	public constructor(props: ICharListProps){
 		super(props);
 		this.fetchCharacterListOnScroll = this.fetchCharacterListOnScroll.bind(this);
 	}
@@ -25,7 +25,7 @@ class CharList extends React.Component<ICharListProps>{
 	}
 
 	public fetchCharacterListOnScroll():void{
-		window.onscroll = (event:any) => {
+		window.onscroll = () => {
 			const st = window.pageYOffset || document.documentElement.scrollTop;
 			const currentPage =  this.props.filters.currentPageNo;
 			const totalPages = this.props.characters.totalPages;
