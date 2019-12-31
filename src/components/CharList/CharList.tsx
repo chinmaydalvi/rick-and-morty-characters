@@ -5,6 +5,7 @@ import {fetchCharList} from "../../actions/char-list.actions";
 import {ICharacters} from "../../states/char-list.state";
 import {IFilterState} from "../../states/filter.state";
 import {CardDesign} from "../CardDesign/CardDesign";
+import {SORTING_ORDER} from "../../common/common.constants";
 
 interface ICharListProps {
 	filters: IFilterState
@@ -29,10 +30,16 @@ class CharList extends React.Component<ICharListProps>{
 			const st = window.pageYOffset || document.documentElement.scrollTop;
 			const currentPage =  this.props.filters.currentPageNo;
 			const totalPages = this.props.characters.totalPages;
-			if (st > this.lastScrollTop && currentPage < totalPages && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			let condition = currentPage < totalPages;
+			let nextPageNo = this.props.filters.currentPageNo + 1;
+			if(this.props.filters.order === SORTING_ORDER.DESC){
+				nextPageNo = this.props.filters.currentPageNo - 1;
+				condition = currentPage > 1;
+			}
+			if (st > this.lastScrollTop && condition && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 				this.props.fetchCharList({
 					...this.props.filters,
-					currentPageNo: this.props.filters.order === "desc" ? this.props.filters.currentPageNo - 1 : this.props.filters.currentPageNo + 1
+					currentPageNo: nextPageNo
 				});
 			}
 			this.lastScrollTop = st <= 0 ? 0 : st;
