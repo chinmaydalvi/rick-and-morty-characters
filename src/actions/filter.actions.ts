@@ -1,12 +1,9 @@
-import {APPLY_FILTERS} from "../action_constants/filter.constants";
+import {APPLY_SORTING} from "../action_constants/filter.constants";
+import {IFilterState} from "../states/filter.state";
 
-export const applyFilter = function () {
-	return{
-		type: APPLY_FILTERS,
-		payload: {
-			gender: "",
-			species: "",
-			status: ""
-		}
+export function applySorting(filters:IFilterState) {
+	return {
+		type: APPLY_SORTING,
+		payload: { filters }
 	}
 }

@@ -3,12 +3,13 @@
 import {from, of} from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
-import {FETCH_CHARACTER_LIST, FETCH_CHARACTER_LIST_FAILED, FETCH_CHARACTER_LIST_SUCCESS} from "../action_constants/char-list.constants";
+import {FETCH_CHARACTER_LIST_FAILED, FETCH_CHARACTER_LIST_SUCCESS} from "../action_constants/char-list.constants";
 import {FetchCharListService} from "../services/fetchCharListService";
+import {APPLY_SORTING} from "../action_constants/filter.constants";
 
-export const fetchCharListOnFilter = (action$: any) => {
+export const fetchCharsOnSorting = (action$: any) => {
 	return action$.pipe(
-			ofType(FETCH_CHARACTER_LIST),
+			ofType(APPLY_SORTING),
 			mergeMap((action: any) => {
 				return from(FetchCharListService.getCharList(action.payload.filters)).pipe(
 						map((response: any) => {

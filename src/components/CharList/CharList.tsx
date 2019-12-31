@@ -32,7 +32,7 @@ class CharList extends React.Component<ICharListProps>{
 			if (st > this.lastScrollTop && currentPage < totalPages && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 				this.props.fetchCharList({
 					...this.props.filters,
-					currentPageNo: this.props.filters.currentPageNo + 1
+					currentPageNo: this.props.filters.order === "desc" ? this.props.filters.currentPageNo - 1 : this.props.filters.currentPageNo + 1
 				});
 			}
 			this.lastScrollTop = st <= 0 ? 0 : st;
@@ -42,7 +42,7 @@ class CharList extends React.Component<ICharListProps>{
 
 
 	public render():JSX.Element{
-		return <CardDesign characters={this.props.characters}/>
+		return <CardDesign characters={this.props.characters} sortBy={this.props.filters.order}/>
 	}
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import scss from './App.module.scss';
 import CharList from "./components/CharList/CharList";
 import {Header} from "./components/Header/Header";
+import SortCharacters from "./components/SortCharacters/SortCharacters";
 
 export class App extends React.Component{
   public constructor(props: any) {
@@ -21,9 +21,8 @@ export class App extends React.Component{
               filters
             </div>
             <div className="col-lg-9 col-md-12 col-sm-12 col-12">
-              <div className={scss.App}>
-                <CharList />
-              </div>
+              <SortCharacters />
+              <CharList />
             </div>
           </div>
         </section>

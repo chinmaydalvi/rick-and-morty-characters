@@ -5,6 +5,11 @@ export const FILTERS = {
 	status: ["Alive", "Dead", "unknown"]
 }
 
+export const SORTING_ORDER = {
+	DESC: "desc",
+	ASC: "asc"
+}
+
 export const INITIAL_TOTAL_NO_OF_PAGES = 25;
 
 

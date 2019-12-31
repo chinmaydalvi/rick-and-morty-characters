@@ -1,3 +1,4 @@
 export const RESET_FILTERS = "RESET_FILTERS";
-
 export const APPLY_FILTERS = "APPLY_FILTERS";
+
+export const APPLY_SORTING = "APPLY_SORTING";

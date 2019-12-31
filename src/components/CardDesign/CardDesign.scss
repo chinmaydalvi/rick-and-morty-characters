@@ -1,3 +1,10 @@
+
+@mixin status-dot($color) {
+  color: $color;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+}
+
 .cartDesign{
   background: black;
   font-weight: bold;
@@ -18,13 +25,14 @@
     }
     .status{
       .dead{
-        color: red;
+        @include status-dot(red);
       }
       .alive{
+        @include status-dot(green);
         color: green;
       }
       .unknown{
-        color: yellow;
+        @include status-dot(yellow);
       }
     }
   }

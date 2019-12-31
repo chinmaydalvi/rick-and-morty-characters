@@ -4,6 +4,6 @@ import {IFilterState} from "../states/filter.state";
 export function fetchCharList(filters:IFilterState) {
 	return {
 		type: FETCH_CHARACTER_LIST,
-		payload: { filters }
+		payload: { filters}
 	}
 }

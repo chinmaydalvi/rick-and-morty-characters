@@ -1,10 +1,10 @@
 import React from "react";
 import "./CardDesign.scss";
 import {ICharacters, ICharInfo} from "../../states/char-list.state";
-import {charInfo} from "../CharList/CharList.scss";
 import {timeSince} from "../../common/utils";
 
 interface ICardDesignProps {
+	sortBy: string;
 	characters: ICharacters
 }
 export class CardDesign extends React.Component<ICardDesignProps>{
@@ -15,7 +15,7 @@ export class CardDesign extends React.Component<ICardDesignProps>{
 
 	public cardBox(charInfo: ICharInfo){
 		return(
-				<div className="col-lg-3 col-md-4 col-sm-3 col-6 cartDesignGrid" key={charInfo.id}>
+				<div className="col-lg-3 col-md-3 col-sm-3 col-6 cartDesignGrid" key={charInfo.id}>
 					<article className="cartDesign">
 						<div className={"charName p-2"}>
 							<div className="name">{charInfo.name}</div>

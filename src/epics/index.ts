@@ -4,6 +4,7 @@
  */
 
 import { combineEpics } from 'redux-observable';
-import {fetchCharacters} from "./fetchCharacters.epic";
+import {fetchCharListOnFilter} from "./fetchCharacters.epic";
+import {fetchCharsOnSorting} from "./fetchCharListOnSorting";
 
-export const rootEpic:any = combineEpics(fetchCharacters);
+export const rootEpic:any = combineEpics(fetchCharListOnFilter, fetchCharsOnSorting);

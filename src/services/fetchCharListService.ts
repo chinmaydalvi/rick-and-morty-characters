@@ -1,6 +1,6 @@
 import {IFilterState} from "../states/filter.state";
-import {store} from "../store";
 import {ICharInfo} from "../states/char-list.state";
+import {SORTING_ORDER} from "../common/common.constants";
 
 class FetchCharListServiceSingleton {
 
@@ -14,11 +14,7 @@ class FetchCharListServiceSingleton {
 
 	public getQueryString(filters: IFilterState):string{
 		let query = "";
-		const totalPages = store.getState().characters.totalPages;
 		query = `page=${filters.currentPageNo}`;
-		if(filters.order === "desc" && totalPages > 1){
-			query = `page=${totalPages - filters.currentPageNo - 1}`
-		}
 
 		if(filters.filters.status){
 			query+=`&status=${filters.filters.status}`
@@ -42,13 +38,15 @@ class FetchCharListServiceSingleton {
 					return response
 				}).catch((response)=>{
 					return response
-				})
+				});
 	}
 
 	public sanitizeData(response:any, filters: IFilterState){
 		response.results = response.results.map(({id, name, status, species, gender, image, created, origin, location}:ICharInfo)=>{
 			return { id, name, status, species, gender, image, created, origin, location};
-		})
+		});
+		// Reverse here itself so that directly can use it while rendering
+		filters.order === SORTING_ORDER.DESC && response.results.reverse();
 		response.filters = filters;
 		return response;
 	}
