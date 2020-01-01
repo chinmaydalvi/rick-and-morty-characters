@@ -18,5 +18,7 @@ B) To Run the project in Production Build environment run following commands in 
 
 TechStack - 
 ReactJS, Redux, Redux Observable, TypeScript , HTML, SCSS.
-Grid Library - Bootstrap 4.
+
+Grid Library - Bootstrap 4
+
 Icons - Font awesome. 
