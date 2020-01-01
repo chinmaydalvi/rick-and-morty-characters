@@ -14,3 +14,9 @@ B) To Run the project in Production Build environment run following commands in 
 1. `npm run build` - This command will create Production build.
 2. And then run `serve -s build` - to serve the production Build locally.
 
+
+
+TechStack - 
+ReactJS, Redux, Redux Observable, TypeScript , HTML, SCSS.
+Grid Library - Bootstrap 4.
+Icons - Font awesome. 
