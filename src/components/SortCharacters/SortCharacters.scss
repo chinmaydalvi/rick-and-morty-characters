@@ -6,4 +6,13 @@ fieldset{
   label{
     margin-right: 10px;
   }
+  select{
+    border: 2px solid grey;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  fieldset{
+    text-align: center;
+  }
 }

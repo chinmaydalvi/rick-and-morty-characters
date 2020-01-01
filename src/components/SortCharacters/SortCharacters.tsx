@@ -33,7 +33,7 @@ class SortCharacters extends React.PureComponent<ISortCharactersProps>{
 		return (
 				<fieldset>
 					<p>
-						<label>Sort Characters By ID: </label>
+						<label>Sort by ID: </label>
 						<select id="order-by" onChange={this.changeSorting} defaultValue={'asc'}>
 							<option value="asc"> Ascending </option>
 							<option value= "desc"> Descending </option>

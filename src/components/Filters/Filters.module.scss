@@ -73,3 +73,13 @@
   transform: rotate(45deg);
 }
 
+@media screen and (max-width: 768px) {
+  .filters{
+    margin-top: 20px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .filters{
+    margin-top: 50px;
+  }
+}
