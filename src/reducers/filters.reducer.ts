@@ -7,12 +7,12 @@ export default function filterReducer(state:IFilterState = FILTER_INITIAL_STATE,
 			const filters = action.payload.response.filters;
 			return {
 				...state,
-				currentPageNo: filters.currentPageNo || state.currentPageNo,
-				order: filters.order || state.order,
+				currentPageNo: filters.currentPageNo,
+				order: filters.order,
 				filters: {
-					gender: filters.filters.gender || state.filters.gender,
-					species: filters.filters.species || state.filters.species,
-					status: filters.filters.status|| state.filters.status
+					gender: filters.filters.gender,
+					species: filters.filters.species,
+					status: filters.filters.status
 				}
 			};
 		default:

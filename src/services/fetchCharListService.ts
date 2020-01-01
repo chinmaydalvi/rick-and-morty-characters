@@ -1,6 +1,6 @@
 import {IFilterState} from "../states/filter.state";
 import {ICharInfo} from "../states/char-list.state";
-import {SORTING_ORDER} from "../common/common.constants";
+// import {SORTING_ORDER} from "../common/common.constants";
 
 class FetchCharListServiceSingleton {
 
@@ -46,18 +46,19 @@ class FetchCharListServiceSingleton {
 			return { id, name, status, species, gender, image, created, origin, location};
 		});
 		// Reverse here itself so that directly can use it while rendering
-		filters.order === SORTING_ORDER.DESC && response.results.reverse();
+		// filters.order === SORTING_ORDER.DESC && response.results.reverse();
 		response.filters = filters;
 		return response;
 	}
 
 	public async getCharList(filters: IFilterState) {
-		let response =  await this.getCharData(filters);
-		if(response.ok){
-			response = await response.json();
-			return this.sanitizeData(response, filters);
-		}
-		return Promise.reject(response)
+			let response =  await this.getCharData(filters);
+			if(response.ok){
+				response = await response.json();
+				return this.sanitizeData(response, filters);
+			}else{
+				return Promise.reject({status: response.status, ok: response.ok})
+			}
 	}
 
 	private static instance: FetchCharListServiceSingleton;

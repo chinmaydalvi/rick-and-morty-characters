@@ -6,7 +6,6 @@ import "./SortCharacters.scss";
 import {IFilterState} from "../../states/filter.state";
 import {ICharacters} from "../../states/char-list.state";
 import {applySorting} from "../../actions/filter.actions";
-import {SORTING_ORDER} from "../../common/common.constants";
 
 interface ISortCharactersProps {
 	filters: IFilterState;
@@ -25,7 +24,7 @@ class SortCharacters extends React.PureComponent<ISortCharactersProps>{
 		// fetch Last Page
 		this.props.applySorting({
 			...this.props.filters,
-			currentPageNo: event.target.value === SORTING_ORDER.DESC ? this.props.characters.totalPages : 1,
+			currentPageNo: 1,
 			order: event.target.value
 		});
 	}
@@ -34,7 +33,7 @@ class SortCharacters extends React.PureComponent<ISortCharactersProps>{
 		return (
 				<fieldset>
 					<p>
-						<label>Sort Characters By </label>
+						<label>Sort Characters By ID: </label>
 						<select id="order-by" onChange={this.changeSorting} defaultValue={'asc'}>
 							<option value="asc"> Ascending </option>
 							<option value= "desc"> Descending </option>

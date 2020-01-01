@@ -2,7 +2,7 @@ import React from 'react';
 import CharList from "./components/CharList/CharList";
 import {Header} from "./components/Header/Header";
 import SortCharacters from "./components/SortCharacters/SortCharacters";
-import {Filters} from "./components/Filters/Filters";
+import Filters from "./components/Filters/Filters";
 
 export class App extends React.Component{
   public constructor(props: any) {

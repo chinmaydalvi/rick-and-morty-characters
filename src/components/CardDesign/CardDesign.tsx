@@ -2,6 +2,7 @@ import React from "react";
 import "./CardDesign.scss";
 import {ICharacters, ICharInfo} from "../../states/char-list.state";
 import {timeSince} from "../../common/utils";
+import {SORTING_ORDER} from "../../common/common.constants";
 
 interface ICardDesignProps {
 	sortBy: string;
@@ -15,7 +16,7 @@ export class CardDesign extends React.PureComponent<ICardDesignProps>{
 
 	public cardBox(charInfo: ICharInfo){
 		return(
-				<div className="col-lg-3 col-md-3 col-sm-3 col-6 cartDesignGrid" key={charInfo.id}>
+				<div className="col-lg-3 col-md-3 col-sm-3 col-6 cartDesignGrid" key={`${charInfo.id}-${charInfo.name}`}>
 					<article className="cartDesign">
 						<div className={"charName p-2"}>
 							<div className="name">{charInfo.name}</div>
@@ -42,9 +43,15 @@ export class CardDesign extends React.PureComponent<ICardDesignProps>{
 	}
 
 	public render(){
+		let charList;
+		if(this.props.sortBy === SORTING_ORDER.DESC){
+			charList = [...this.props.characters.charList].sort(((char1:any, char2:any) => char2.id - char1.id));
+		}else{
+			charList = [...this.props.characters.charList].sort(((char1:any, char2:any) => char1.id - char2.id));
+		}
 		return(
 				<div className="row active-with-click">
-					{this.props.characters.charList.map((charInfo: ICharInfo)=>{
+					{charList.map((charInfo: ICharInfo)=>{
 						return this.cardBox(charInfo)
 					})}
 				</div>

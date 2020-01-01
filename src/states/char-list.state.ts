@@ -1,13 +1,15 @@
-import {INITIAL_TOTAL_NO_OF_PAGES} from "../common/common.constants";
-
 export const CHAR_LIST_INITIAL_STATE:ICharacters = {
-	totalPages: INITIAL_TOTAL_NO_OF_PAGES,
-	charList: []
+	totalPages: 0,
+	charList: [],
+	loading: false,
+	error: null
 }
 
 export interface ICharacters {
+	error: any;
 	totalPages: number,
 	charList: ICharInfo[];
+	loading: boolean;
 }
 
 export interface ICharInfo {

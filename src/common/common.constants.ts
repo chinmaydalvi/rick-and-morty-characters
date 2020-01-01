@@ -1,8 +1,8 @@
 
 export const FILTERS = {
 	genders: ["male", "female", "unknown"],
-	species: ["Human",  "Alien", "Animal", "Humanoid", "Robot"],
-	status: ["Alive", "Dead", "unknown"]
+	species: ["human",  "alien", "animal", "humanoid", "robot"],
+	status: ["alive", "dead", "unknown"]
 }
 
 export const SORTING_ORDER = {

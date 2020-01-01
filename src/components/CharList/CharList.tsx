@@ -5,7 +5,7 @@ import {fetchCharList} from "../../actions/char-list.actions";
 import {ICharacters} from "../../states/char-list.state";
 import {IFilterState} from "../../states/filter.state";
 import {CardDesign} from "../CardDesign/CardDesign";
-import {SORTING_ORDER} from "../../common/common.constants";
+import {Loader} from "../Loader/Loader";
 
 interface ICharListProps {
 	filters: IFilterState
@@ -32,11 +32,7 @@ class CharList extends React.Component<ICharListProps>{
 			const totalPages = this.props.characters.totalPages;
 			let condition = currentPage < totalPages;
 			let nextPageNo = this.props.filters.currentPageNo + 1;
-			if(this.props.filters.order === SORTING_ORDER.DESC){
-				nextPageNo = this.props.filters.currentPageNo - 1;
-				condition = currentPage > 1;
-			}
-			if (st > this.lastScrollTop && condition && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			if (st > this.lastScrollTop && condition && (window.innerHeight + window.scrollY) >= document.body.offsetHeight && !this.props.characters.loading) {
 				this.props.fetchCharList({
 					...this.props.filters,
 					currentPageNo: nextPageNo
@@ -49,7 +45,12 @@ class CharList extends React.Component<ICharListProps>{
 
 
 	public render():JSX.Element{
-		return <CardDesign characters={this.props.characters} sortBy={this.props.filters.order}/>
+		return (
+				<>
+					<CardDesign characters={this.props.characters} sortBy={this.props.filters.order}/>
+					{this.props.characters.loading ? <Loader /> : <></>}
+				</>
+		)
 	}
 }
 
