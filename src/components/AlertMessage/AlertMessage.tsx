@@ -24,7 +24,7 @@ export class AlertMessage extends  React.PureComponent<IAlertMessageProps>{
 		let message = "Sorry Something went wrong";
 		const className = "alert-danger";
 		if(this.props.error.status === 404){
-			message = "Sorry No records found for applied filters";
+			message = "Sorry No records found for applied filter combination(s)";
 		}
 		return(
 				<div className={scss.alertMessage}>
