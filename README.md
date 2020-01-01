@@ -5,7 +5,7 @@ Installation Steps:
 1. clone the Repo and navigate to the project folder.
 2. run `npm i`
 
-##You can Run the project in two environment.
+You can Run the project in two environment.
 
 A) To Run the project on Development environment Run the `npm run start` command in your terminal.
 
