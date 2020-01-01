@@ -1,15 +1,17 @@
 import React from 'react';
 import { Dispatch } from 'redux';
 import {connect} from "react-redux";
-import {fetchCharList} from "../../actions/char-list.actions";
+import {fetchCharList, hideAlert} from "../../actions/char-list.actions";
 import {ICharacters} from "../../states/char-list.state";
 import {IFilterState} from "../../states/filter.state";
 import {CardDesign} from "../CardDesign/CardDesign";
 import {Loader} from "../Loader/Loader";
+import {AlertMessage} from "../AlertMessage/AlertMessage";
 
 interface ICharListProps {
 	filters: IFilterState
 	characters: ICharacters;
+	hideAlertMessage: () => void;
 	fetchCharList: (filters: IFilterState) => void;
 }
 
@@ -18,6 +20,7 @@ class CharList extends React.Component<ICharListProps>{
 	public constructor(props: ICharListProps){
 		super(props);
 		this.fetchCharacterListOnScroll = this.fetchCharacterListOnScroll.bind(this);
+		this.hideAlert = this.hideAlert.bind(this);
 	}
 
 	public componentDidMount(): void {
@@ -42,14 +45,17 @@ class CharList extends React.Component<ICharListProps>{
 		};
 	}
 
-
+	public hideAlert(){
+		this.props.hideAlertMessage();
+	}
 
 	public render():JSX.Element{
 		return (
 				<>
+					{this.props.characters.error ? <AlertMessage error={this.props.characters.error} hideAlert={this.hideAlert}/> : <></>}
 					<CardDesign characters={this.props.characters} sortBy={this.props.filters.order}/>
 					{this.props.characters.loading ? <Loader /> : <></>}
-				</>
+					</>
 		)
 	}
 }
@@ -65,6 +71,7 @@ const mapStateToProps = (state: any, props: any) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
 	return {
 		fetchCharList: (filters: IFilterState) => dispatch(fetchCharList(filters)),
+		hideAlertMessage: () => dispatch(hideAlert())
 	};
 };
 export default connect(

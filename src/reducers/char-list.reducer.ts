@@ -1,8 +1,13 @@
 import {CHAR_LIST_INITIAL_STATE, ICharacters} from "../states/char-list.state";
-import {FETCH_CHARACTER_LIST, FETCH_CHARACTER_LIST_FAILED, FETCH_CHARACTER_LIST_SUCCESS} from "../action_constants/char-list.constants";
+import {
+	FETCH_CHARACTER_LIST,
+	FETCH_CHARACTER_LIST_FAILED,
+	FETCH_CHARACTER_LIST_SUCCESS,
+	HIDE_ALERT
+} from "../action_constants/char-list.constants";
 import {APPLY_SEARCHING_SORTING} from "../action_constants/filter.constants";
 
-export default function charactersReducer(state:ICharacters = CHAR_LIST_INITIAL_STATE, action:any) {
+export default function charactersReducer(state:ICharacters = CHAR_LIST_INITIAL_STATE, action:any):ICharacters {
 	switch (action.type) {
 		case FETCH_CHARACTER_LIST_SUCCESS:
 			return {
@@ -22,11 +27,15 @@ export default function charactersReducer(state:ICharacters = CHAR_LIST_INITIAL_
 				loading: true
 			};
 		case FETCH_CHARACTER_LIST_FAILED:
-			debugger
 			return {
 				...state,
-				errorResponse: action.payload.error,
+				error: action.payload.error,
 				loading: false
+			};
+		case HIDE_ALERT:
+			return {
+				...state,
+				error: null
 			};
 		default:
 			return state
