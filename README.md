@@ -1,6 +1,6 @@
 # rick-and-morty-characters
 
-React js application developed to display all charcters in Rick and Morty Show.
+React js application developed to display charcters in Rick and Morty Show.
 To know more about Rick & morty show refer the link https://en.wikipedia.org/wiki/Rick_and_Morty
 
 IMDB Rating -  **9.2/10** (Over 3 Lakhs votes)
